@@ -34,7 +34,7 @@ public class FastParking implements Parking {
 
 	}
 
-	public Collection<Vehicle> getCarsByColor(String color) {
+	public Collection<Vehicle> getVehiclesByColor(String color) {
 		return null;
 	}
 
@@ -42,7 +42,13 @@ public class FastParking implements Parking {
 		return null;
 	}
 
-	public Vehicle getBySlot(Slot slot) {
+	public Slot getSlot(String regNum) {
+		return null;
+	}
+
+	@Override
+	public Map<Slot, Vehicle> status() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 }
