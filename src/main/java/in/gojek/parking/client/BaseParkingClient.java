@@ -41,14 +41,20 @@ public abstract class BaseParkingClient implements ParkingClient {
 			printSlotsByColor(commandAndData);
 			break;
 		case Commands.QUERY_SLOT_BY_NUMBER:
-			Slot slot = parking.getSlot(commandAndData[1]);
-			if (null != slot) {
-				System.out.println(slot.getNumber());
-			}
+			printSlotByNumber(commandAndData);
 			break;
 		default:
 			System.out.println(Messages.INVALID_OPTION);
 			break;
+		}
+	}
+
+	private void printSlotByNumber(String[] commandAndData) {
+		Slot slot = parking.getSlot(commandAndData[1]);
+		if (null != slot) {
+			System.out.println(slot.getNumber());
+		} else {
+			System.out.println(Messages.NOT_FOUND);
 		}
 	}
 
@@ -91,10 +97,16 @@ public abstract class BaseParkingClient implements ParkingClient {
 		if (null != filled && filled.size() > 0) {
 			System.out.println(Messages.STATUS_HEADER);
 			StringBuilder sb = new StringBuilder();
+			boolean first = true;
 			for (Slot slot : filled.keySet()) {
 				Vehicle vehicle = filled.get(slot);
+				if (first) {
+					first = false;
+				} else {
+					sb.append(NEWLINE);
+				}
 				sb.append(slot.getNumber()).append(TAB).append(vehicle.getRegNum()).append(TAB)
-						.append(vehicle.getColor()).append(NEWLINE);
+						.append(vehicle.getColor());
 			}
 			System.out.println(sb.toString());
 		}
