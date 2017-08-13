@@ -5,6 +5,7 @@
 	<artifactId>parking</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>parking lot</name>
+	<packaging>jar</packaging>
 	<description>parking lot management module</description>
 
 	<properties>
@@ -21,4 +22,24 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	
+	<build>
+  <plugins>
+    <plugin>
+      <!-- Build an executable JAR -->
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-jar-plugin</artifactId>
+      <version>3.0.2</version>
+      <configuration>
+        <archive>
+          <manifest>
+            <addClasspath>true</addClasspath>
+            <classpathPrefix>lib/</classpathPrefix>
+            <mainClass>in.gojek.parking.DriverProgram</mainClass>
+          </manifest>
+        </archive>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>
 </project>
