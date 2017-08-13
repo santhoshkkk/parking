@@ -120,6 +120,7 @@ public abstract class BaseParkingClient implements ParkingClient {
 		if (null == parking) {
 			int size = Integer.parseInt(commandAndData[1]);
 			parking = new FastParking(size);
+			System.out.println(MessageFormat.format(Messages.PARKING_CREATED, commandAndData[1]));
 		} else {
 			System.out.println("Parking already exists. Ignoring");
 		}
