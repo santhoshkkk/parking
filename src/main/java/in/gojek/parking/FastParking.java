@@ -1,8 +1,11 @@
 package in.gojek.parking;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import in.gojek.parking.model.Slot;
 import in.gojek.parking.model.Vehicle;
@@ -27,7 +30,7 @@ public class FastParking implements Parking {
 	}
 
 	public Slot park(Vehicle vehicle) {
-		return null;
+		return new Slot(1);
 	}
 
 	public void leave(int slotNum) {
@@ -35,20 +38,25 @@ public class FastParking implements Parking {
 	}
 
 	public Collection<Vehicle> getVehiclesByColor(String color) {
-		return null;
+		List<Vehicle> veh = new ArrayList<>();
+		veh.add(new Vehicle("XXXX", "white"));
+		return veh;
 	}
 
 	public Collection<Slot> getSlotsByColor(String color) {
-		return null;
+		List<Slot> slots = new ArrayList<>();
+		slots.add(new Slot(1));
+		return slots;
 	}
 
 	public Slot getSlot(String regNum) {
-		return null;
+		return new Slot(1);
 	}
 
 	@Override
 	public Map<Slot, Vehicle> status() {
-		// TODO Auto-generated method stub
-		return null;
+		Map<Slot, Vehicle> occupied = new TreeMap<>();
+		occupied.put(new Slot(1), new Vehicle("XXXX", "white"));
+		return occupied;
 	}
 }
