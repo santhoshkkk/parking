@@ -21,12 +21,17 @@ public class ParkingTest {
 	@Test
 	public void testEmpty() {
 		Parking p = new FastParking(10);
+		Vehicle v = new Vehicle("KA-01-HH-1234", "White");
+		p.park(v);
+		p.leave(1);
 		Assert.assertTrue(p.isEmpty());
 	}
 
 	@Test
 	public void testFull() {
-		Parking p = new FastParking(0);
+		Parking p = new FastParking(1);
+		Vehicle v = new Vehicle("KA-01-HH-1234", "White");
+		p.park(v);
 		Assert.assertTrue(p.isFull());
 	}
 
@@ -66,9 +71,9 @@ public class ParkingTest {
 
 		Assert.assertNotNull(status);
 		Assert.assertEquals(3, status.size());
-		Assert.assertEquals("KA-01-HH-1234", status.get(new Slot(1)));
-		Assert.assertEquals("KA-01-HH-1236", status.get(new Slot(3)));
-		Assert.assertEquals("KA-01-HH-1237", status.get(new Slot(4)));
+		Assert.assertEquals(v1, status.get(new Slot(1)));
+		Assert.assertEquals(v3, status.get(new Slot(3)));
+		Assert.assertEquals(v4, status.get(new Slot(4)));
 	}
 
 	@Test
